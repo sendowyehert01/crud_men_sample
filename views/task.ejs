@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Your Tasks today:</h1>
+        <form action="/tasks/addtask" method="GET">
+            <button>Add Task</button>
+        </form>
+    <ul>
+            <% if (todos.length == 0) { %>
+                <p> No TASKS today! </p>
+            <% } else { %>
+                <% for (let todo of todos) { %>
+                    <li>
+                        <h2><%= todo.task %></h2>
+                        <form action="/tasks/<%= todo.id %>/edit" method="GET">
+                            <button>EDIT</button>
+                        </form>
+                        <form action="/tasks/<%= todo.id %>?_method=DELETE" method="POST">
+                            <button>DELETE</button>
+                        </form>
+                    </li>
+                <% } %>
+            <% } %>
+    </ul>
+    
+</body>
+</html>
