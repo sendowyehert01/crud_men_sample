@@ -38,8 +38,12 @@ app.get('/tasks/addtask', (req,res) => {
 
 app.post('/tasks', async (req,res) => {
     const newTodos = new TaskModel(req.body);
-    await newTodos.save();
-    res.redirect('/tasks');
+    if (newTodos.task === "") {
+        res.redirect('/tasks/addtask');
+    } else {
+        await newTodos.save();
+        res.redirect('/tasks');
+    }
 })
 
 // Editting a TASK ---------------------------------------

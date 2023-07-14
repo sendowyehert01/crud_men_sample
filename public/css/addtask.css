@@ -1,0 +1,24 @@
+.container {
+    margin-top: 100px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: inset;
+    background-color: aquamarine;
+    max-width: 500px !important;
+}
+
+form {
+    text-align: center;
+    margin: 200 auto;
+    padding: 0;
+    font-family: monospace;
+}
+
+label {
+    margin: 25px !important;
+    font-size: 25px;
+}
+
+button {
+    margin: 25px !important;
+}

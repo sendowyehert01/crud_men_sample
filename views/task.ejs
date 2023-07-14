@@ -2,31 +2,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/task.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.min.js"></script>
+    <title>Your Tasks Today!</title>
 </head>
 <body>
-
-    <h1>Your Tasks today:</h1>
+    <div class="container mb-3">
+        <h1>Your Tasks Today:</h1>
         <form action="/tasks/addtask" method="GET">
-            <button>Add Task</button>
+            <button class="btn btn-success">Add Task</button>
         </form>
-    <ul>
-            <% if (todos.length == 0) { %>
-                <p> No TASKS today! </p>
-            <% } else { %>
-                <% for (let todo of todos) { %>
-                    <li>
-                        <h2><%= todo.task %></h2>
-                        <form action="/tasks/<%= todo.id %>/edit" method="GET">
-                            <button>EDIT</button>
-                        </form>
-                        <form action="/tasks/<%= todo.id %>?_method=DELETE" method="POST">
-                            <button>DELETE</button>
-                        </form>
-                    </li>
+            <ul>
+                <% if (todos.length == 0) { %>
+                    <p> NO TASKS Today! </p>
+                <% } else { %>
+                    <% for (let todo of todos) { %>
+                        <li>
+                            <h2><%= todo.task %></h2>
+                            <form action="/tasks/<%= todo.id %>/edit" method="GET" class="container-btn1">
+                                <button class="btn btn-warning">EDIT</button>
+                            </form>
+                            <form action="/tasks/<%= todo.id %>?_method=DELETE" method="POST" class="container-btn2">
+                                <button class="btn btn-danger">DELETE</button>
+                            </form>
+                        </li>
+                    <% } %>
                 <% } %>
-            <% } %>
-    </ul>
-    
+            </ul>
+    </div>
 </body>
 </html>

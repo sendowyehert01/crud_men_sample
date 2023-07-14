@@ -1,0 +1,25 @@
+.container {
+    margin-top: 100px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: inset;
+    background-color: aquamarine;
+    max-width: 700px !important;
+}
+
+p {
+    text-align: center;
+    font-size: 50px;
+}
+
+li {
+    display: flex;
+}
+
+.container-btn1 {
+    margin-left: 20px;
+}
+.container-btn2 {
+    margin-left: 5px;
+}
+

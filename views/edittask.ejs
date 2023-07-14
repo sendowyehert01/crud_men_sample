@@ -2,13 +2,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/addtask.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.min.js"></script>
     <title>Edit Task</title>
 </head>
 <body>
-    <form action="/tasks/<%= taskId._id %>?_method=PUT" method="POST">
-        <label for="task"> What are you going to do? </label>
-        <input type="text" id="task" name="task" value="<%= taskId.task %>">
-        <button> ADD </button>
-    </form>
+    <div class="container mb-3">
+        <form action="/tasks/<%= taskId._id %>?_method=PUT" method="POST">
+            <label for="task"> <b>What are you going to do?</b> </label>
+            <input class="form-control" type="text" id="task" name="task" value="<%= taskId.task %>">
+            <button class="btn btn-success"> ADD </button>
+        </form>
+    </div>
 </body>
 </html>
