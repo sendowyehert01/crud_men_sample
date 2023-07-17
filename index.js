@@ -16,6 +16,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/todoList', { useNewUrlParser: true ,
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+app.use(express.json());
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -38,12 +39,27 @@ app.get('/tasks/addtask', (req,res) => {
 
 app.post('/tasks', async (req,res) => {
     const newTodos = new TaskModel(req.body);
-    if (newTodos.task === "") {
-        res.redirect('/tasks/addtask');
-    } else {
+    // if (newTodos.task === "") {
+    //     res.redirect('/tasks/addtask');
+    // } else {
+        // await newTodos.save();
+
+        let error;
+        try {
         await newTodos.save();
         res.redirect('/tasks');
-    }
+        } catch (err) {
+        error = err;
+        res.redirect('/tasks/addtask');
+        }
+
+        // assert.equal(error.errors['task'].message,
+        // 'Path `name` is required.');
+
+        // error = newTodos.validateSync();
+        // assert.equal(error.errors['task'].message,
+        // 'Path `name` is required.');
+    // }
 })
 
 // Editting a TASK ---------------------------------------
